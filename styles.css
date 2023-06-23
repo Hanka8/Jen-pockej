@@ -1,0 +1,439 @@
+:root {
+    /* use different multiplier for different screen sizes */
+    --multiplier: 2.5;
+
+    /* animations */
+    --animationDurationEgg: 4000ms;
+    --animationIterationCountEgg: infinite;
+    --animationTimingFunctionEgg: step-start;
+
+    --fontSize: calc(15px*var(--multiplier));
+
+    --gameContainerWidth: calc(473px*var(--multiplier));
+    --gameContainerHeight: calc(295px*var(--multiplier));
+
+    --startBtnsBoxX: calc(406px*var(--multiplier));
+    --startBtnsBoxY: calc(23px*var(--multiplier));
+
+    --startBtnWidth: calc(24px*var(--multiplier));
+    --startBtnHeight: calc(14px*var(--multiplier));
+
+    --directionBtnWidth: calc(34px*var(--multiplier));
+    --directionBtnHeight: calc(34px*var(--multiplier));
+    --directionBtnBorderWidth: calc(5px*var(--multiplier));
+
+    --leftTopBtnX: calc(38px*var(--multiplier));
+    --leftTopBtnY: calc(176px*var(--multiplier));
+    --rightTopBtnX: calc(400px*var(--multiplier));
+    --rightTopBtnY: calc(176px*var(--multiplier));
+    --leftBottomBtnX: calc(38px*var(--multiplier));
+    --leftBottomBtnY: calc(234px*var(--multiplier));
+    --rightBottomBtnX: calc(400px*var(--multiplier));
+    --rightBottomBtnY: calc(234px*var(--multiplier));
+
+    --gameBoardWidth: calc(255px*var(--multiplier));
+    --gameBoardHeight: calc(189px*var(--multiplier));
+
+    --wolfWidth: calc(68px*var(--multiplier));
+    --wolfHeight: calc(70px*var(--multiplier));
+    --wolfPositionX: calc(65px*var(--multiplier));
+    --wolfPositionY: calc(80px*var(--multiplier));
+
+    --eggWidth: calc(7px*var(--multiplier));
+    --eggHeight: calc(9px*var(--multiplier));
+
+    --eggTopLeftX: calc(24px*var(--multiplier));
+    --eggTopLeftY: calc(52px*var(--multiplier));
+    --eggTopRightX: calc(223px*var(--multiplier));
+    --eggTopRightY: calc(52px*var(--multiplier));
+    --eggBottomLeftX: calc(24px*var(--multiplier));
+    --eggBottomLeftY: calc(94px*var(--multiplier));
+    --eggBottomRightX: calc(223px*var(--multiplier));
+    --eggBottomRightY: calc(94px*var(--multiplier));
+
+    --crashedEggWidth: calc(24px*var(--multiplier));
+    --crashedEggHeight: calc(10px*var(--multiplier));
+
+    --crashedEggLeftY: calc(159px*var(--multiplier));
+    --crashedEggLeftX: calc(49px*var(--multiplier));
+    --crashedEggRightY: calc(159px*var(--multiplier));
+    --crashedEggRightX: calc(179px*var(--multiplier));
+
+    --scoreY: calc(11px*var(--multiplier));
+    --scoreX: calc(142px*var(--multiplier));
+
+    --livesBoxWidth: calc(54px*var(--multiplier));
+    --livesBoxHeight: calc(19px*var(--multiplier));
+    --livesBoxY: calc(32px*var(--multiplier));
+    --livesBoxX: calc(126px*var(--multiplier));
+
+    --chickenRunningWidth: calc(12px*var(--multiplier));
+    --chickenRunningHeight: calc(11px*var(--multiplier));
+
+    --chickenRunningLeftY: calc(147px*var(--multiplier));
+    --chickenRunningLeftX: calc(45px*var(--multiplier));
+    --chickenRunningRightY: calc(147px*var(--multiplier));
+    --chickenRunningRightX: calc(193px*var(--multiplier));
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+.game-container {
+    position: relative;
+    text-align: center;
+    width: var(--gameContainerWidth);
+    height: var(--gameContainerHeight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    background-color: #dbcba9ff;
+}
+
+.start-btns-box {
+    position: absolute;
+    left: var(--startBtnsBoxX);
+    top: var(--startBtnsBoxY);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.start-btn {
+    width: var(--startBtnWidth);
+    height: var(--startBtnHeight);
+    cursor: pointer;
+    border-radius: 20px;
+    border-width: calc(var(--startBtnWidth)/20);
+    border-color: rgb(70, 70, 62);
+    border-style: solid;
+    background-color: rgb(166, 159, 126);
+}
+
+.start-btn:hover {
+    background-color: rgb(166, 159, 126, 0.5);
+}
+
+.start-btn-caption {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+.direction-btn {
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    width: var(--directionBtnWidth);
+    height: var(--directionBtnHeight);
+    border-width: var(--directionBtnBorderWidth);
+    border-color: antiquewhite;
+    border-style: solid;
+    background-color: red;
+}
+
+.direction-btn:hover {
+    background-color: rgb(95, 4, 4);
+}
+
+#leftTopBtn {
+    left: var(--leftTopBtnX);
+    top: var(--leftTopBtnY);
+}
+
+#rightTopBtn {
+    left: var(--rightTopBtnX);
+    top: var(--rightTopBtnY);
+}
+
+#leftBottomBtn {
+    left: var(--leftBottomBtnX);
+    top: var(--leftBottomBtnY);
+}
+
+#rightBottomBtn {
+    left: var(--rightBottomBtnX);
+    top: var(--rightBottomBtnY);
+}
+
+#score {
+    font-size: var(--fontSize);
+    font-family: 'Digital Numbers', sans-serif;
+    position: absolute;
+    top: var(--scoreY);
+    left: var(--scoreX);
+}
+
+#lives {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#gameBoard {
+    border-radius: 20px;
+    border: 2px solid #000;
+    outline: 6px solid #f7f9f8ff;
+    filter: drop-shadow(5px 5px 15px #00000044);
+    background-color: #b6bfb2ff;
+    background-image: url(assets/background.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    width: var(--gameBoardWidth);
+    height: var(--gameBoardHeight);
+    position: relative;
+}
+
+#wolf {
+    background-image: url(assets/wolf_leftUp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    /* tohle pak smaž */
+    /* border: 1px solid red; */
+    
+    height: var(--wolfHeight);
+    width: var(--wolfWidth);
+    position: absolute;
+    left: var(--wolfPositionX);
+    top: var(--wolfPositionY);
+}
+
+.egg {
+    background-image: url(assets/egg.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: var(--eggWidth);
+    height: var(--eggHeight);
+    position: absolute;
+}
+
+.egg-top-left {
+    top: var(--eggTopLeftY);
+    left: var(--eggTopLeftX);
+    animation: moveEggLeft;
+}
+
+.egg-top-right {
+    top: var(--eggTopRightY);
+    left: var(--eggTopRightX);
+    animation: moveEggRight;
+}
+
+.egg-bottom-left {
+    top: var(--eggBottomLeftY);
+    left: var(--eggBottomLeftX);
+    animation: moveEggLeft;
+}
+
+.egg-bottom-right {
+    top: var(--eggBottomRightY);
+    left: var(--eggBottomRightX);
+    animation: moveEggRight;
+}
+
+.egg-top-left,
+.egg-top-right,
+.egg-bottom-left,
+.egg-bottom-right {
+    animation-duration: var(--animationDurationEgg);
+    animation-iteration-count: var(--animationIterationCountEgg);
+    animation-timing-function: var(--animationTimingFunctionEgg);
+}
+
+@keyframes moveEggLeft {
+    20% {
+        transform: rotate(0deg);
+        translate: 0;
+        }
+    40% {
+        translate: calc(9px*var(--multiplier)) calc(5px*var(--multiplier));
+        transform: rotate(30deg);
+    }
+    60% {
+        translate: calc(18px*var(--multiplier)) calc(10px*var(--multiplier));
+        transform: rotate(60deg);
+    }
+    80% {
+        translate: calc(27px*var(--multiplier)) calc(15px*var(--multiplier));
+        transform: rotate(90deg);
+    }
+    100% {
+        translate: calc(36px*var(--multiplier)) calc(20px*var(--multiplier));
+        transform: rotate(120deg);
+    }
+}
+
+@keyframes moveEggRight {
+    20% {
+        transform: rotate(0deg);
+        translate: 0;
+        }
+    40% {
+        translate: calc(-9px*var(--multiplier)) calc(5px*var(--multiplier));
+        transform: rotate(-30deg);
+    }
+    60% {
+        translate: calc(-18px*var(--multiplier)) calc(10px*var(--multiplier));
+        transform: rotate(-60deg);
+    }
+    80% {
+        translate: calc(-27px*var(--multiplier)) calc(15px*var(--multiplier));
+        transform: rotate(-90deg);
+    }
+    100% {
+        translate: calc(-36px*var(--multiplier)) calc(20px*var(--multiplier));
+        transform: rotate(-120deg);
+    }
+}
+
+.egg-crashed {
+    background-image: url(assets/crashedEgg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: var(--crashedEggWidth);
+    height: var(--crashedEggHeight);
+    position: absolute;
+}
+
+.egg-crashed-top-left, .egg-crashed-bottom-left {
+    top: var(--crashedEggLeftY);
+    left: var(--crashedEggLeftX);
+}
+
+.egg-crashed-top-right, .egg-crashed-bottom-right {
+    top: var(--crashedEggRightY);
+    left: var(--crashedEggRightX);
+}
+
+#livesBox {
+    width: var(--livesBoxWidth);
+    height: var(--livesBoxHeight);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    gap: 3%;
+    position: absolute;
+    top: var(--livesBoxY);
+    left: var(--livesBoxX);
+
+}
+
+.life {
+    background-image: url(assets/life.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-basis: 30%;
+    height: 100%;
+    animation-name: lifeAppears;
+    animation-duration: 800ms;
+    animation-iteration-count: 3;
+    animation-timing-function: step-start;
+}
+
+@keyframes lifeAppears {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.running-left {
+    animation: running-left;
+
+    position: absolute;
+    top: var(--chickenRunningLeftY);
+    left: var(--chickenRunningLeftX);
+}
+
+.running-right {
+    animation: running-right;
+
+    position: absolute;
+    top: var(--chickenRunningRightY);
+    left: var(--chickenRunningRightX);
+
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.chicken-running {
+    background-image: url(assets/chickenRunning1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: var(--chickenRunningWidth);
+    height: var(--chickenRunningHeight);
+
+
+    animation-duration: 2000ms;
+    animation-iteration-count: 1;
+    animation-timing-function: step-start;
+}
+
+
+
+@keyframes running-left {
+    25% {
+        background-image: url(assets/chickenRunning1.svg);
+        left: calc(var(--chickenRunningLeftX) - 3%);
+    }
+    50% {
+        background-image: url(assets/chickenRunning2.svg);
+        left: calc(var(--chickenRunningLeftX) - 6%);
+    }
+    75% {
+        background-image: url(assets/chickenRunning3.svg);
+        left: calc(var(--chickenRunningLeftX) - 9%);
+    }
+    100% {
+        background-image: url(assets/chickenRunning4.svg);
+        left: calc(var(--chickenRunningLeftX) - 12%);
+    }
+}
+
+@keyframes running-right {
+    25% {
+        background-image: url(assets/chickenRunning1.svg);
+        left: calc(var(--chickenRunningRightX) + 3%);
+    }
+
+    50% {
+        background-image: url(assets/chickenRunning2.svg);
+        left: calc(var(--chickenRunningRightX) + 6%);
+    }
+
+    75% {
+        background-image: url(assets/chickenRunning3.svg);
+        left: calc(var(--chickenRunningRightX) + 9%);
+    }
+
+    100% {
+        background-image: url(assets/chickenRunning4.svg);
+        left: calc(var(--chickenRunningRightX) + 12%);
+    }
+
+}
+
+
+
