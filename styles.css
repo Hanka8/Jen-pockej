@@ -9,11 +9,11 @@
 
     --fontSize: calc(15px*var(--multiplier));
 
-    --gameContainerWidth: calc(473px*var(--multiplier));
-    --gameContainerHeight: calc(295px*var(--multiplier));
+    --gameContainerWidth: calc(520px*var(--multiplier));
+    --gameContainerHeight: calc(337px*var(--multiplier));
 
-    --startBtnsBoxX: calc(406px*var(--multiplier));
-    --startBtnsBoxY: calc(23px*var(--multiplier));
+    --startBtnsBoxX: calc(446px*var(--multiplier));
+    --startBtnsBoxY: calc(36px*var(--multiplier));
 
     --startBtnWidth: calc(24px*var(--multiplier));
     --startBtnHeight: calc(14px*var(--multiplier));
@@ -24,11 +24,11 @@
 
     --leftTopBtnX: calc(38px*var(--multiplier));
     --leftTopBtnY: calc(176px*var(--multiplier));
-    --rightTopBtnX: calc(400px*var(--multiplier));
+    --rightTopBtnX: calc(446px*var(--multiplier));
     --rightTopBtnY: calc(176px*var(--multiplier));
     --leftBottomBtnX: calc(38px*var(--multiplier));
     --leftBottomBtnY: calc(234px*var(--multiplier));
-    --rightBottomBtnX: calc(400px*var(--multiplier));
+    --rightBottomBtnX: calc(446px*var(--multiplier));
     --rightBottomBtnY: calc(234px*var(--multiplier));
 
     --gameBoardWidth: calc(255px*var(--multiplier));
@@ -98,9 +98,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-
-    background-color: #dbcba9ff;
+    border-radius: 20px;
+    background-image: url(assets/game-pad-background-3.png);
+    background-color:rgb(0, 0, 0);
+    background-size: cover;
 }
 
 .start-btns-box {
@@ -129,7 +130,7 @@ body {
 
 .start-btn-caption {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     color: #000;
     margin-top: 10%;
@@ -187,9 +188,7 @@ body {
 
 #gameBoard {
     border-radius: 20px;
-    border: 2px solid #000;
-    outline: 6px solid #f7f9f8ff;
-    filter: drop-shadow(5px 5px 15px #00000044);
+    outline: 5px solid #ee3f3fff;
     background-color: #b6bfb2ff;
     background-image: url(assets/background.svg);
     background-repeat: no-repeat;
@@ -433,6 +432,12 @@ body {
         left: calc(var(--chickenRunningRightX) + 12%);
     }
 
+}
+
+@media (max-width:50rem) {
+    .start-btn-caption {
+        font-size: .5rem;
+    }
 }
 
 
