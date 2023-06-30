@@ -13,20 +13,46 @@ const leftBottomBtn = document.getElementById('leftBottomBtn');
 const rightTopBtn = document.getElementById('rightTopBtn');
 const rightBottomBtn = document.getElementById('rightBottomBtn');
 
+const EGG_FREQUENCY_CHANGE_A = 450;
+const EGG_SPEED_CHANGE_A = 40;
+
+const EGG_FREQUENCY_CHANGE_B = 800;
+const EGG_SPEED_CHANGE_B = 80;
+
 class Game {
   constructor() {
     this.score = 0;
     this.lives = 0;
-    this.eggFrequency = 3000;
+    this.eggFrequency = 2000;
     this.eggSpeed = 1000;
     this.wolf = new Wolf();
     this.isEnded = false;
     this.intervalId = null;
     this.gameStarted = false;
+    this.previousEggState = "";
+    this.gameType = "A";
   }
 
   start() {
     document.addEventListener('keydown', this.handleKeyDown);
+
+    leftBottomBtn.addEventListener('click', () => {
+      game.wolf.moveLeft();
+      game.wolf.moveDown();
+    });
+    leftTopBtn.addEventListener('click', () => {
+      game.wolf.moveLeft();
+      game.wolf.moveUp();
+    });
+    rightBottomBtn.addEventListener('click', () => {
+      game.wolf.moveRight();
+      game.wolf.moveDown();
+    });
+    rightTopBtn.addEventListener('click', () => {
+      game.wolf.moveRight();
+      game.wolf.moveUp();
+    });
+
     this.intervalId = setInterval(() => {
       if (this.isEnded) { 
         clearInterval(this.intervalId);
@@ -37,13 +63,39 @@ class Game {
         return;
       }
       const egg = new Egg();
-      egg.fall();
+      if (!this.eggCrashed) {
+        egg.fall(); // Start falling only if there is no crash
+        egg.timeOfExistence = 0;
+      }
+      //slow down the game
+      if (this.score % 100 == 0) {
+        this.eggFrequency = 4000;
+      }
+      //remove lifes when the score is at some point
+      if (this.score == 200 || this.score == 500 || this.score == 1000) {
+        this.lives = 0;
+        document.querySelectorAll('.life').forEach(lifeElement => {
+          livesBoxElement.removeChild(lifeElement);
+        });
+      }
+      //speeding up the game
+      if (this.score % 10 == 0 && this.eggFrequency >= 1000 && this.eggSpeed >= 500 ) {
+        if (this.gameType == "A") {
+          this.eggFrequency -= EGG_FREQUENCY_CHANGE_A;
+          this.eggSpeed -= EGG_SPEED_CHANGE_A;
+        } else {
+          this.eggFrequency -= EGG_FREQUENCY_CHANGE_B;
+          this.eggSpeed -= EGG_SPEED_CHANGE_B;
+        }
+      };
     }, this.eggFrequency);
   }
 
   end() {
     document.removeEventListener('keydown', this.handleKeyDown);
     this.isEnded = true;
+    let gameOverSound = new Audio('sounds/gameOver.mp3');
+    gameOverSound.play();
   }
 
   handleKeyDown(event) {
@@ -63,33 +115,20 @@ class Game {
       default:
         break;
     }
-
-    leftBottomBtn.addEventListener('click', () => {
-      game.wolf.moveLeft();
-      game.wolf.moveDown();
-    });
-    leftTopBtn.addEventListener('click', () => {
-      game.wolf.moveLeft();
-      game.wolf.moveUp();
-    });
-    rightBottomBtn.addEventListener('click', () => {
-      game.wolf.moveRight();
-      game.wolf.moveDown();
-    });
-    rightTopBtn.addEventListener('click', () => {
-      game.wolf.moveRight();
-      game.wolf.moveUp();
-    });
   }
 
   updateScore() {
     this.score += 1;
     scoreElement.innerHTML = this.score;
+    let collectSound = new Audio('sounds/collect.mp3');
+    collectSound.play();
   }
 
   updateLives() {
     this.lives += 1;
     if (this.lives <= 3) {
+      let lifeSound = new Audio('sounds/lifeDown.mp3');
+      lifeSound.play();
       let lifeElement = document.createElement('div');
       lifeElement.classList.add('life');
       livesBoxElement.appendChild(lifeElement); 
@@ -122,7 +161,7 @@ class Wolf {
     this.right = false;
     this.up = true;
     this.down = false;
-    this.state = "bottom-left";
+    this.state = "top-left";
   }
 
   moveLeft() {
@@ -191,10 +230,16 @@ class Egg {
   constructor() {
     let eggOptions = ["bottom-left", "bottom-right", "top-left", "top-right"];
     this.state = eggOptions[Math.floor(Math.random() * eggOptions.length)];
+    // prevent eggs to slide directly after each other
+    while (this.state === game.previousEggState) {
+      this.state = eggOptions[Math.floor(Math.random() * eggOptions.length)];
+    };
+    game.previousEggState = this.state;
     this.timeOfExistence = 0;
   }
 
   fall() { 
+
     let eggElement = document.createElement('div');
     eggElement.classList.add('egg');
     eggElement.classList.add(`egg-${this.state}`);
@@ -203,12 +248,17 @@ class Egg {
     const self = this;
 
     const interval = setInterval(() => {
-    self.timeOfExistence += 1;
-    if (self.timeOfExistence === 4) {
-      clearInterval(interval);
-      game.wolf.checkCollision(self);
-      gameBoardElement.removeChild(eggElement);
-    }
+
+      self.timeOfExistence += 1;
+      if (self.timeOfExistence === 4 && !game.isEnded) {
+        clearInterval(interval);
+        game.wolf.checkCollision(self);
+        gameBoardElement.removeChild(eggElement);
+      }
+
+      // let eggSound = new Audio('sounds/egg.mp3');
+      // eggSound.play();
+    
       }, game.eggSpeed);
   }
 
@@ -233,33 +283,57 @@ const game = new Game();
 document.documentElement.style.setProperty("--animationDurationEgg", `${game.eggSpeed*4}ms`);
 
 startBtn1.addEventListener('click', () => {
+ if (game.isEnded) {
+  location.reload();
+ }
  if (!game.gameStarted) {
       game.start();
       game.gameStarted = true;
+      game.gameType = "A";
     }
 });
 
 startBtn2.addEventListener('click', () => {
+  if (game.isEnded) {
+    location.reload();
+  }
   if (!game.gameStarted) {
         game.eggSpeed = 1200;
         game.eggFrequency = 4000;
         game.start();
         game.gameStarted = true;
+        game.gameType = "B";
+        game.eggSpeed = 800;
+        game.eggFrequency = 4000;
       }
 });
 
+function responsibility() {
+  const gameContainerWidth = gameContainerElement.offsetWidth;
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
 
-window.addEventListener('resize', () => {
-  let gameContainerWidth = gameContainerElement.offsetWidth;
-  let windowWidth = window.innerWidth;
-  let multiplierChanged = windowWidth / 473;
-   if (windowWidth < 1000) {
-    document.documentElement.style.setProperty("--multiplier", `${multiplierChanged*0.7}`);
-   } else if (windowWidth >= 1000 && windowWidth < 1200) {
-    document.documentElement.style.setProperty("--multiplier", "2");
+  const regex = /\((.*?)px/;
+
+  const containerHeightString = getComputedStyle(document.documentElement).getPropertyValue('--gameContainerHeight'); 
+  const containerHeight = parseInt(containerHeightString.match(regex)[1]);
+
+  const containerWidhtString = getComputedStyle(document.documentElement).getPropertyValue('--gameContainerWidth'); 
+  const containerWidth = parseInt(containerHeightString.match(regex)[1]);
+
+  const newMultiplierBasedOnHeight = windowHeight/containerHeight;
+  const newMultiplierBasedOnWidth = windowWidth/containerWidth;
+
+   if (windowWidth < 1400) {
+    if (windowWidth / windowHeight < 1.6) {
+      document.documentElement.style.setProperty("--multiplier", `${newMultiplierBasedOnWidth/2}`);
+    } else {
+      document.documentElement.style.setProperty("--multiplier", `${newMultiplierBasedOnHeight}`);
+    }
    } else {
     document.documentElement.style.setProperty("--multiplier", "2.5");
    }
-   
-});
+}
 
+window.addEventListener('resize', responsibility);
+window.addEventListener('load', responsibility);

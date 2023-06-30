@@ -18,9 +18,10 @@
     --startBtnWidth: calc(24px*var(--multiplier));
     --startBtnHeight: calc(14px*var(--multiplier));
 
-    --directionBtnWidth: calc(34px*var(--multiplier));
-    --directionBtnHeight: calc(34px*var(--multiplier));
-    --directionBtnBorderWidth: calc(5px*var(--multiplier));
+    --directionBtnWidth: calc(28px*var(--multiplier));
+    --directionBtnHeight: calc(28px*var(--multiplier));
+    --directionBtnOutlineWidth: calc(5px*var(--multiplier));
+    --directionBtnBorderWidth: calc(2px*var(--multiplier));
 
     --leftTopBtnX: calc(38px*var(--multiplier));
     --leftTopBtnY: calc(176px*var(--multiplier));
@@ -33,6 +34,7 @@
 
     --gameBoardWidth: calc(255px*var(--multiplier));
     --gameBoardHeight: calc(189px*var(--multiplier));
+    --gameBoardBorderWidth: calc(8px*var(--multiplier));
 
     --wolfWidth: calc(68px*var(--multiplier));
     --wolfHeight: calc(70px*var(--multiplier));
@@ -102,13 +104,13 @@ body {
     background-image: url(assets/game-pad-background-3.png);
     background-color:rgb(0, 0, 0);
     background-size: cover;
+    
 }
 
 .start-btns-box {
     position: absolute;
     left: var(--startBtnsBoxX);
     top: var(--startBtnsBoxY);
-
     display: flex;
     flex-direction: column;
 }
@@ -118,23 +120,34 @@ body {
     height: var(--startBtnHeight);
     cursor: pointer;
     border-radius: 20px;
-    border-width: calc(var(--startBtnWidth)/20);
+    border-width: calc(var(--startBtnWidth)/18);
     border-color: rgb(70, 70, 62);
-    border-style: solid;
-    background-color: rgb(166, 159, 126);
+    border-style: none;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    background: linear-gradient(to top right, rgb(80, 78, 78), rgb(221, 219, 219) 90%);
+    outline-color: #ae1921;
+    outline-style: solid;
+    outline-width: calc(var(--startBtnWidth)/9);
 }
 
 .start-btn:hover {
-    background-color: rgb(166, 159, 126, 0.5);
+    background: linear-gradient(to top right, rgb(66, 64, 64), rgb(221, 219, 219) 98%);
+}
+
+.start-btn:active {
+    background: linear-gradient(to top right, rgb(66, 64, 64), rgb(221, 219, 219) 98%);
+    border-style: solid;
+    border-width: calc(var(--startBtnWidth)/20);
 }
 
 .start-btn-caption {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #000;
-    margin-top: 10%;
-    margin-bottom: 15%;
+    margin-top: 18%;
+    margin-bottom: 28%;
 }
 
 .direction-btn {
@@ -143,14 +156,28 @@ body {
     position: absolute;
     width: var(--directionBtnWidth);
     height: var(--directionBtnHeight);
+    outline-width: var(--directionBtnOutlineWidth);
+    outline-color: #cd222d;
+    outline-style: solid;
     border-width: var(--directionBtnBorderWidth);
-    border-color: antiquewhite;
     border-style: solid;
-    background-color: red;
+    border-color: #692424;
+    border-top: none;
+    border-right: none;
+    background: linear-gradient(to top right, #520000, #cd222d 50%, #ecdfdf 95%);
+    z-index: 100;
 }
 
+
 .direction-btn:hover {
-    background-color: rgb(95, 4, 4);
+    background: linear-gradient(to top right, #520000, #cd222d 55%, #ecdfdf 99%);
+}
+
+.direction-btn:active {
+    background: linear-gradient(to top right, #520000, #cd222d 55%, #ecdfdf 99%);
+    border-style: solid;
+    border-color: #692424;
+    border-width: calc(var(--directionBtnBorderWidth)/1.5);
 }
 
 #leftTopBtn {
@@ -187,26 +214,24 @@ body {
 }
 
 #gameBoard {
-    border-radius: 20px;
-    outline: 5px solid #ee3f3fff;
+    border-radius: 12px;
+    box-sizing: content-box;
+    border: var(--gameBoardBorderWidth) solid #b81823;
+    box-shadow: inset calc(var(--gameBoardBorderWidth)/-3) calc(var(--gameBoardBorderWidth)/3) calc(var(--gameBoardBorderWidth)) black;
     background-color: #b6bfb2ff;
     background-image: url(assets/background.svg);
     background-repeat: no-repeat;
     background-size: 100%;
-
     width: var(--gameBoardWidth);
     height: var(--gameBoardHeight);
     position: relative;
+    left: 0.2%;
 }
 
 #wolf {
     background-image: url(assets/wolf_leftUp.svg);
     background-repeat: no-repeat;
     background-size: contain;
-
-    /* tohle pak smaž */
-    /* border: 1px solid red; */
-    
     height: var(--wolfHeight);
     width: var(--wolfWidth);
     position: absolute;
@@ -439,6 +464,3 @@ body {
         font-size: .5rem;
     }
 }
-
-
-

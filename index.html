@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="screen-orientation" content="landscape">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.cdnfonts.com/css/digital-numbers" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/favicon32.png" type="image/x-icon">
     <script src="app.js" defer></script>
     <title>Jen počkej!</title>
 </head>
@@ -14,14 +16,15 @@
     <div class="game-container">
         <div class="start-btns-box">
             <button id="startBtn1" class="start-btn"></button>
-            <p class="start-btn-caption">hra 1</p>
+            <p class="start-btn-caption">hra A</p>
             <button id="startBtn2" class="start-btn"></button>
-            <p class="start-btn-caption">hra 2</p>
+            <p class="start-btn-caption">hra B</p>
         </div>
         <div id="gameBoard">
             <p id="score">0000</p>
             <div id="livesBox"></div>
             <div id="wolf"></div>
+           
         </div>
         <button id="leftTopBtn" class="direction-btn"></button>
         <button id="leftBottomBtn" class="direction-btn"></button>
