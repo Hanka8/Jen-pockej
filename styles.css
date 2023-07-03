@@ -229,7 +229,7 @@ body {
 }
 
 #wolf {
-    background-image: url(../assets/wolf_leftUp.svg);
+    background-image: url(../assets/wolf_LeftUp.svg);
     background-repeat: no-repeat;
     background-size: contain;
     height: var(--wolfHeight);
