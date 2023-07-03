@@ -88,6 +88,8 @@ class Game {
           this.eggSpeed -= EGG_SPEED_CHANGE_B;
         }
       };
+
+      document.documentElement.style.setProperty("--animationDurationEgg", `${this.eggSpeed*4.1}ms`);
     }, this.eggFrequency);
   }
 
@@ -279,8 +281,6 @@ class Egg {
 }
 
 const game = new Game();
-
-document.documentElement.style.setProperty("--animationDurationEgg", `${game.eggSpeed*4}ms`);
 
 startBtn1.addEventListener('click', () => {
  if (game.isEnded) {
