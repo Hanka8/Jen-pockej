@@ -1,4 +1,4 @@
-![NU, POGODI!](Nu,_pogodi!_logo.png)
+![NU, POGODI!](https://upload.wikimedia.org/wikipedia/commons/2/2b/Nu%2C_pogodi%21_logo.png)
 
 # Nu, pogodi! Game
 
