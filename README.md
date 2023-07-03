@@ -31,7 +31,7 @@ This project is licensed under no license.
 
 ## Acknowledgements
 
-This game is inspired by the "Well, Just You Wait!" game. Sound effects used in the game are obtained from [freesound.org](https://freesound.org/).
+This game is inspired by the ["Well, Just You Wait!"]([https://freesound.org/](https://en.wikipedia.org/wiki/Well,_Just_You_Wait!)) game. 
 
 ## Author
 
