@@ -166,10 +166,10 @@ class Wolf {
 
   moveLeft() {
     if (this.up) {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_LeftUp.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_LeftUp.svg')";
         this.state = "top-left"; 
     } else {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_LeftDown.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_LeftDown.svg')";
         this.state = "bottom-left"; 
     }
     document.documentElement.style.setProperty("--wolfPositionX", "calc(65px*var(--multiplier))");
@@ -179,10 +179,10 @@ class Wolf {
 
   moveRight() {
     if (this.up) {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_RightUp.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_RightUp.svg')";
         this.state = "top-right"; 
      } else {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_RightDown.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_RightDown.svg')";
         this.state = "bottom-right"; 
      }
     document.documentElement.style.setProperty("--wolfPositionX", "calc(125px*var(--multiplier))");
@@ -192,10 +192,10 @@ class Wolf {
 
   moveUp() {
     if (this.left) {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_LeftUp.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_LeftUp.svg')";
         this.state = "top-left"; 
      } else {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_RightUp.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_RightUp.svg')";
         this.state = "top-right";
      }
     this.up = true;
@@ -204,10 +204,10 @@ class Wolf {
 
   moveDown() {
     if (this.left) {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_LeftDown.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_LeftDown.svg')";
         this.state = "bottom-left"; 
      } else {
-        wolfElement.style.backgroundImage = "url('../assets/wolf_RightDown.svg')";
+        wolfElement.style.backgroundImage = "url('assets/wolf_RightDown.svg')";
         this.state = "bottom-right";
      }
     this.up = false;
