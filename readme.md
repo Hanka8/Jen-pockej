@@ -1,34 +1,39 @@
-# Hra s padajícími vajíčky
+![NU, POGODI!](Nu,_pogodi!_logo.png)
 
-"Nu, Pogodi!" je populární sovětská hra, která byla vytvořena v roce 1980 a založena na stejnojmenném sovětském animovaném seriálu. Ve hře ovládáte vlka, který se snaží chytit padající vajíčka. Cílem je sbírat správná vajíčka odpovídající stavu vlka a vyhnout se těm nesprávným. Je to jednoduchá, ale zábavná hra, která vyžaduje dobré reflexy a koordinaci.
+# Nu, pogodi! Game
 
-## Spuštění hry
+This is a JavaScript implementation of the classic game "Well, Just You Wait!" (also known as "Nu, Pogodi!"). The game involves catching falling eggs with a moving character while avoiding collisions with incorrect eggs.
 
-1. Otevřete soubor `index.html` ve vašem webovém prohlížeči.
+## Getting Started
 
-## Ovládání
+1. Start the game by clicking on one of the "game" buttons. The game has two difficulty levels: A and B.
 
-- Šipka nahoru: Pohyb vlka nahoru
-- Šipka dolů: Pohyb vlka dolů
-- Šipka doleva: Pohyb vlka doleva
-- Šipka doprava: Pohyb vlka doprava
-- Mezerník: Spuštění hry
+2. Control the character's movement using the arrow keys or the provided on-screen buttons.
 
-## Pravidla
+3. Catch the eggs into the wolfs basket to score points. Avoid falling eggs.
 
-1. Po spuštění hry se budou z vrchu obrazovky postupně objevovat padající vajíčka.
-2. Vlka ovládáte pomocí šipek nahoru, dolů, doleva a doprava.
-3. Vajíčka odpovídají stavu vlka a musíte je sbírat správným směrem, jinak ztratíte život.
-4. Za každé sebrané vajíčko získáte bod.
-5. Pokud neseberete vajíčko, ztratíte život.
-6. Máte tři životy a cílem je získat co nejvíce bodů před jejich vyčerpáním.
-7. Hra končí, když ztratíte všechny životy.
+6. The game ends when you let three eggs fall. You can restart the game by clicking one of the "game" button again.
 
-## Přizpůsobení
+## Game Controls
 
-- Frekvence padání vajíček: `eggFrequency` v třídě `Game` (v milisekundách)
-- Rychlost padání vajíček: `eggSpeed` v třídě `Game` (v milisekundách)
+- Use the arrow keys (left, right, up, down) to move the character.
+- Alternatively, use the on-screen buttons for movement.
 
-## Autor
+## Features and Customization
 
-Hana Maruškevičová
+- The game includes two difficulty levels: A and B.
+- The game speed and egg frequency increase as you score more points.
+- The game is responsive and adjusts the game area size based on the window dimensions.
+
+## License
+
+This project is licensed under no license.
+
+## Acknowledgements
+
+This game is inspired by the "Well, Just You Wait!" game. Sound effects used in the game are obtained from [freesound.org](https://freesound.org/).
+
+## Author
+
+- [Hana Maruškevičová](https://github.com/Hanka8)
+
