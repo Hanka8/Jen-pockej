@@ -463,17 +463,16 @@ body {
     opacity: 0;
     position: absolute;
     inset: 0;
-    top: -70vh;
+    top: -100%;
     transition: 300ms;
     background-color: rgba(0, 0, 0, 0.692);
     backdrop-filter: blur(5px);
     color: #faead6;
     display: block;
-    inset: 0;
     width: calc(var(--gameContainerWidth) * 0.8);
     height: calc(var(--gameContainerHeight) * 0.7);
     left: 50%;
-    translate: -50% -50%;
+    translate: -50% 0;
     z-index: 3;
     padding: 5%;
     text-align: center;
@@ -486,6 +485,7 @@ body {
     opacity: 1;
     top: 50%;
     transition: 300ms;
+    translate: -50% -50%;
 }
 
 #modal.shown #closeModalBtn {
