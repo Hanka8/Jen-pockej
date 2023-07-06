@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="cz">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play an exciting cult game of the Eastern Bloc inspired by the \"Nu pogodi\" tv series. Collect eggs, avoid crashes, and challenge your reflexes. How high can you score?">
+    <meta name="author" constent="Hana Maruškevičová"></meta>
     <meta name="screen-orientation" content="landscape">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Nu, pogodi!">
+    <meta property="og:title" content="Nu, pogodi! browser game."/>
+    <meta property="og:image" content="assets/Screenshot.bmp" />
+    <meta property="og:description" content="Play an exciting cult game of the Eastern Bloc inspired by the \"Nu pogodi\" tv series. Collect eggs, avoid crashes, and challenge your reflexes. How high can you score?"/>
+    <link rel="apple-touch-icon" href="assets/favicon32.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.cdnfonts.com/css/digital-numbers" rel="stylesheet">
     <link rel="shortcut icon" href="assets/favicon32.png" type="image/x-icon">
-    <script src="app.js?v=4" defer></script>
-    <title>Jen počkej!</title>
+    <script src="app.js" defer></script>
+    <title>Nu, pogodi!</title>
 </head>
 
 <body>
-
-    <div class="game-container">
+    <main class="game-container">
         <div class="start-btns-box">
             <button id="startBtn1" class="start-btn"></button>
-            <p class="start-btn-caption">hra A</p>
+            <p class="start-btn-caption">game A</p>
             <button id="startBtn2" class="start-btn"></button>
-            <p class="start-btn-caption">hra B</p>
+            <p class="start-btn-caption">game B</p>
         </div>
         <div id="gameBoard">
             <p id="score">0000</p>
@@ -30,6 +38,11 @@
         <button id="leftBottomBtn" class="direction-btn"></button>
         <button id="rightTopBtn" class="direction-btn"></button>
         <button id="rightBottomBtn" class="direction-btn"></button>
+    </main>
+
+    <div id="modal">
+        <p>Please rotate your phone to landscape orientation for the best experience </p>
+        <img id="closeModalBtn" src="assets/close.svg" alt="">
     </div>
 
 </body>

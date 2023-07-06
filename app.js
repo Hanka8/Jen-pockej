@@ -4,6 +4,7 @@ const wolfElement = document.getElementById('wolf');
 const gameContainerElement = document.querySelector('.game-container');
 const gameBoardElement = document.getElementById('gameBoard');
 const livesBoxElement = document.getElementById('livesBox');
+const modalElement = document.getElementById('modal');
 
 const startBtn1 = document.getElementById('startBtn1');
 const startBtn2 = document.getElementById('startBtn2');
@@ -12,6 +13,7 @@ const leftTopBtn = document.getElementById('leftTopBtn');
 const leftBottomBtn = document.getElementById('leftBottomBtn');
 const rightTopBtn = document.getElementById('rightTopBtn');
 const rightBottomBtn = document.getElementById('rightBottomBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
 
 const EGG_FREQUENCY_CHANGE_A = 450;
 const EGG_SPEED_CHANGE_A = 40;
@@ -27,7 +29,7 @@ class Game {
     this.eggSpeed = 1000;
     this.wolf = new Wolf();
     this.isEnded = false;
-    this.intervalId = null;
+    // this.intervalId = null;
     this.gameStarted = false;
     this.previousEggState = "";
     this.gameType = "A";
@@ -335,5 +337,27 @@ function responsibility() {
    }
 }
 
-window.addEventListener('resize', responsibility);
-window.addEventListener('load', responsibility);
+window.addEventListener('resize', () => {
+  responsibility();
+  pleaseRotate();
+});
+
+window.addEventListener('load', () => {
+  responsibility();
+  pleaseRotate();
+});
+
+//add class "shown" to modal when mobile screen orientation is not landscape
+
+function pleaseRotate() {
+  if (window.screen.width <= 700) {
+    if (window.screen.orientation.type === "portrait-primary" || window.screen.orientation.type === "portrait-secondary") {
+        modalElement.classList.add('shown');
+      } else {
+        modalElement.classList.remove('shown');
+      }
+  } 
+  closeModalBtn.addEventListener('click', () => {
+    modalElement.classList.remove('shown');
+  });
+}
