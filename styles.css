@@ -1,6 +1,6 @@
 :root {
     /* use different multiplier for different screen sizes */
-    --multiplier: 2.5;
+    --multiplier: 1.8;
 
     /* animations */
     --animationDurationEgg: 4000ms;
@@ -498,7 +498,7 @@ body {
 }
 
 
-@media (max-width:50rem) {
+@media (max-width:1065px) {
     .start-btn-caption {
         font-size: .5rem;
     }

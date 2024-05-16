@@ -21,6 +21,8 @@ const EGG_SPEED_CHANGE_A = 40;
 const EGG_FREQUENCY_CHANGE_B = 800;
 const EGG_SPEED_CHANGE_B = 80;
 
+const MAX_MULTIPLIER = 1.8;
+
 class Game {
   constructor() {
     this.score = 0;
@@ -323,10 +325,10 @@ function responsibility() {
   const containerWidhtString = getComputedStyle(document.documentElement).getPropertyValue('--gameContainerWidth'); 
   const containerWidth = parseInt(containerHeightString.match(regex)[1]);
 
-  const newMultiplierBasedOnHeight = windowHeight/containerHeight;
-  const newMultiplierBasedOnWidth = windowWidth/containerWidth;
+  const newMultiplierBasedOnHeight =(windowHeight/containerHeight) > MAX_MULTIPLIER ? MAX_MULTIPLIER : (windowHeight/containerHeight);
+  const newMultiplierBasedOnWidth = (windowWidth/containerWidth) > MAX_MULTIPLIER ? MAX_MULTIPLIER : (windowWidth/containerWidth);
 
-   if (windowWidth < 1400) {
+   if (windowWidth < 2400) {
     if (windowWidth / windowHeight < 1.6) {
       document.documentElement.style.setProperty("--multiplier", `${newMultiplierBasedOnWidth/2}`);
     } else {
@@ -335,6 +337,8 @@ function responsibility() {
    } else {
     document.documentElement.style.setProperty("--multiplier", "2.5");
    }
+
+   console.log(document.documentElement.style.getPropertyValue('--multiplier'));
 }
 
 window.addEventListener('resize', () => {
