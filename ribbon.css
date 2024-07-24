@@ -1,0 +1,23 @@
+.ukraine-ribbon {
+  position: fixed;
+  top: 10px;
+  left: -50px;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+  transform: rotate(-45deg);
+}
+
+.ribbon-top,
+.ribbon-bottom {
+  width: 100%;
+  height: 50%;
+}
+
+.ribbon-top {
+  background-color: #0057b7;
+}
+
+.ribbon-bottom {
+  background-color: #ffd700;
+}

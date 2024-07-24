@@ -68,7 +68,7 @@ class Game {
       }
       const egg = new Egg();
       if (!this.eggCrashed) {
-        egg.fall(); // Start falling only if there is no crash
+        egg.fall();
         egg.timeOfExistence = 0;
       }
       //slow down the game
@@ -325,7 +325,7 @@ function responsibility() {
   const containerWidhtString = getComputedStyle(document.documentElement).getPropertyValue('--gameContainerWidth'); 
   const containerWidth = parseInt(containerHeightString.match(regex)[1]);
 
-  const newMultiplierBasedOnHeight =(windowHeight/containerHeight) > MAX_MULTIPLIER ? MAX_MULTIPLIER : (windowHeight/containerHeight);
+  const newMultiplierBasedOnHeight = (windowHeight/containerHeight) > MAX_MULTIPLIER ? MAX_MULTIPLIER : (windowHeight/containerHeight);
   const newMultiplierBasedOnWidth = (windowWidth/containerWidth) > MAX_MULTIPLIER ? MAX_MULTIPLIER : (windowWidth/containerWidth);
 
    if (windowWidth < 2400) {

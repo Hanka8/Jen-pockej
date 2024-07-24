@@ -1,3 +1,5 @@
+@import "./ribbon.css";
+
 :root {
     /* use different multiplier for different screen sizes */
     --multiplier: 1.8;
@@ -104,7 +106,6 @@ body {
     background-image: url(assets/game-pad-background-3.png);
     background-color:rgb(0, 0, 0);
     background-size: cover;
-    
 }
 
 .start-btns-box {
@@ -356,7 +357,6 @@ body {
     position: absolute;
     top: var(--livesBoxY);
     left: var(--livesBoxX);
-
 }
 
 .life {
@@ -409,13 +409,10 @@ body {
     width: var(--chickenRunningWidth);
     height: var(--chickenRunningHeight);
 
-
     animation-duration: 2000ms;
     animation-iteration-count: 1;
     animation-timing-function: step-start;
 }
-
-
 
 @keyframes running-left {
     25% {
@@ -456,7 +453,6 @@ body {
         background-image: url(assets/chickenRunning4.svg);
         left: calc(var(--chickenRunningRightX) + 12%);
     }
-
 }
 
 #modal {
