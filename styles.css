@@ -494,8 +494,20 @@ body {
 }
 
 
-@media (max-width:1065px) {
+@media (max-width:870px) {
     .start-btn-caption {
-        font-size: .5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:620px) {
+    .start-btn-caption {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width:520px) {
+    .start-btn-caption {
+        font-size: 0.5rem;
     }
 }
