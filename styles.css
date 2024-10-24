@@ -6,7 +6,7 @@
 
     /* animations */
     --animationDurationEgg: 4000ms;
-    --animationIterationCountEgg: infinite;
+    --animationIterationCountEgg: 1;
     --animationTimingFunctionEgg: step-start;
 
     --fontSize: calc(15px*var(--multiplier));
@@ -280,6 +280,7 @@ body {
     animation-duration: var(--animationDurationEgg);
     animation-iteration-count: var(--animationIterationCountEgg);
     animation-timing-function: var(--animationTimingFunctionEgg);
+    animation-fill-mode: forwards;
 }
 
 @keyframes moveEggLeft {
