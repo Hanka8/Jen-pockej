@@ -17,11 +17,16 @@ const closeModalBtn = document.getElementById("closeModalBtn");
 
 const EGG_FREQUENCY_CHANGE_A = 450;
 const EGG_SPEED_CHANGE_A = 40;
-
 const EGG_FREQUENCY_CHANGE_B = 800;
 const EGG_SPEED_CHANGE_B = 80;
-
 const MAX_MULTIPLIER = 1.8;
+
+const imagePaths = [
+  "url('assets/wolf_LeftUp.svg')",
+  "url('assets/wolf_LeftDown.svg')",
+  "url('assets/wolf_RightUp.svg')",
+  "url('assets/wolf_RightDown.svg')",
+];
 
 class Game {
   constructor() {
@@ -39,6 +44,7 @@ class Game {
 
   start() {
     document.addEventListener("keydown", this.handleKeyDown);
+    this.preloadImages();
 
     leftBottomBtn.addEventListener("click", () => {
       game.wolf.moveLeft();
@@ -164,6 +170,13 @@ class Game {
     setTimeout(() => {
       gameBoardElement.removeChild(chicken);
     }, 2000);
+  }
+
+  preloadImages(...imagePaths) {
+    imagePaths.forEach((imagePath) => {
+      const img = new Image();
+      img.src = imagePath;
+    });
   }
 }
 
