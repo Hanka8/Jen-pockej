@@ -10,7 +10,7 @@ This is a JavaScript implementation of the classic game "Well, Just You Wait!" (
 
 2. Control the character's movement using the arrow keys or the provided on-screen buttons.
 
-3. Catch the eggs into the wolfs basket to score points. Avoid falling eggs.
+3. Catch the eggs into the wolfs basket to score points. Avoid falling eggs. 
 
 6. The game ends when you let three eggs fall. You can restart the game by clicking one of the "game" button again.
 
